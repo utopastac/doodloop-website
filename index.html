@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doodloop</title>
+    <title>Doodloop, See how far the doodle wandered</title>
     <meta
       name="description"
-      content="Doodloop — local multiplayer pictorial Chinese whispers for iPhone. Draw, pass left, guess, and reveal the mangled chains together."
+      content="Doodloop, a drawing relay party game for nearby iPhones. Draw, pass left, guess, then reveal how far the doodles wandered around the table."
     />
     <link rel="icon" href="./assets/app-icon-64.png" type="image/png" />
     <link rel="apple-touch-icon" href="./assets/app-icon-256.png" />
@@ -14,99 +14,394 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Space+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Space+Mono:wght@400;700&display=swap"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=28" />
   </head>
   <body>
     <div class="page">
-      <div class="shell">
-        <nav class="nav" aria-label="Primary">
-          <a class="brand" href="./">
-            <img
-              class="brandIcon"
-              src="./assets/app-icon-256.png"
-              width="40"
-              height="40"
-              alt=""
-            />
-            <span class="brandName">Doodloop</span>
-          </a>
-          <div class="navLinks">
-            <a href="./support/">Support</a>
-            <a href="./privacy/">Privacy</a>
+      <div class="stack">
+        <header class="block blockNav">
+          <nav class="nav" aria-label="Primary">
+            <a class="brand" href="./">
+              <img
+                class="brandIcon"
+                src="./assets/app-icon-256.png"
+                width="96"
+                height="96"
+                alt=""
+              />
+              <span class="brandName">Doodloop</span>
+            </a>
+            <div class="navLinks">
+              <a href="./support/">Support</a>
+              <a href="./privacy/">Privacy</a>
+            </div>
+          </nav>
+        </header>
+
+        <section class="block hero" aria-labelledby="hero-brand">
+          <div class="heroGrid">
+            <div class="heroCopy" data-reveal>
+              <h1 id="hero-brand" class="heroBrand">
+                See how far the doodle wandered
+              </h1>
+              <p class="heroLede">
+                Local multiplayer on nearby iPhones. Draw, pass left, guess,
+                repeat, then reveal the loop together.
+              </p>
+              <div class="ctaRow">
+                <a
+                  class="button"
+                  href="#"
+                  aria-disabled="true"
+                  title="App Store link coming soon"
+                >
+                  [ App Store, soon ]
+                </a>
+                <a class="button secondary" href="#how">[ How it works ]</a>
+              </div>
+            </div>
+
+            <figure
+              class="heroPhone device phone"
+              data-reveal
+              data-reveal-delay="1"
+            >
+              <span class="sideBtn power" aria-hidden="true"></span>
+              <span class="sideBtn volUp" aria-hidden="true"></span>
+              <span class="sideBtn volDown" aria-hidden="true"></span>
+              <div class="bezel">
+                <span class="island" aria-hidden="true"></span>
+                <img
+                  class="screen"
+                  src="./assets/screenshots/06-round-over.png"
+                  width="396"
+                  height="860"
+                  alt="Round complete, ready for another round of Doodloop"
+                />
+              </div>
+            </figure>
           </div>
-        </nav>
+        </section>
 
-        <main class="panel hero">
-          <h1>Doodloop</h1>
-          <p class="lede">
-            Local multiplayer pictorial Chinese whispers. One category starts
-            every pad — draw, pass left, guess, draw again — then reveal how
-            far the doodles wandered around the table.
-          </p>
+        <section class="block blockSplit" id="how" aria-labelledby="how-title">
+          <div class="blockHead">
+            <h2 id="how-title">
+              One shared category. Pads travel left. The joke lands at the end.
+            </h2>
+          </div>
+          <ol class="cellRow cellRow4">
+            <li class="cell" data-reveal>
+              <figure class="device phone loopPhone">
+                <div class="bezel">
+                  <img
+                    class="screen"
+                    src="./assets/screenshots/03-drawing.png"
+                    width="396"
+                    height="860"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <div class="cellCopy">
+                <span class="loopIndex">01</span>
+                <h3>Draw</h3>
+                <p>Sketch the prompt on your pad before the timer runs out.</p>
+              </div>
+            </li>
+            <li class="cell" data-reveal data-reveal-delay="1">
+              <div class="loopPass" aria-hidden="true">
+                <span class="loopPassArrow">→</span>
+                <span>Pass left</span>
+              </div>
+              <div class="cellCopy">
+                <span class="loopIndex">02</span>
+                <h3>Pass</h3>
+                <p>
+                  Every pad moves one seat left, you never keep drawing on your
+                  own.
+                </p>
+              </div>
+            </li>
+            <li class="cell" data-reveal data-reveal-delay="2">
+              <figure class="device phone loopPhone">
+                <div class="bezel">
+                  <img
+                    class="screen"
+                    src="./assets/screenshots/04-guessing.png"
+                    width="396"
+                    height="860"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <div class="cellCopy">
+                <span class="loopIndex">03</span>
+                <h3>Guess</h3>
+                <p>
+                  Write what you think the doodle shows. Someone else will draw
+                  that.
+                </p>
+              </div>
+            </li>
+            <li class="cell" data-reveal data-reveal-delay="3">
+              <figure class="device phone loopPhone">
+                <div class="bezel">
+                  <img
+                    class="screen"
+                    src="./assets/screenshots/05-reveal.png"
+                    width="396"
+                    height="860"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <div class="cellCopy">
+                <span class="loopIndex">04</span>
+                <h3>Reveal</h3>
+                <p>
+                  Walk each pad’s journey together and watch the chain unravel.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </section>
 
-          <div class="ctaRow">
+        <section class="block blockSplit" aria-labelledby="gallery-title">
+          <div class="blockHead galleryHead">
+            <h2 id="gallery-title">
+              From lobby to laugh, swipe through a full game.
+            </h2>
+            <div class="galleryNav">
+              <button
+                type="button"
+                class="galleryBtn"
+                data-gallery-prev
+                aria-label="Previous screenshot"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                class="galleryBtn"
+                data-gallery-next
+                aria-label="Next screenshot"
+              >
+                →
+              </button>
+            </div>
+          </div>
+          <div class="blockGallery">
+            <ul class="galleryTrack" data-gallery-track>
+              <li class="gallerySlide" style="--card: var(--paper-broadsheet)">
+                <div class="galleryCard">
+                  <figure class="device phone">
+                    <span class="sideBtn power" aria-hidden="true"></span>
+                    <span class="sideBtn volUp" aria-hidden="true"></span>
+                    <span class="sideBtn volDown" aria-hidden="true"></span>
+                    <div class="bezel">
+                      <span class="island" aria-hidden="true"></span>
+                      <img
+                        class="screen"
+                        src="./assets/screenshots/01-home.png"
+                        width="396"
+                        height="860"
+                        alt="Home, host or join a nearby game"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                  <p class="galleryCaption">
+                    <strong>Home</strong>
+                    <span>Host a table or join one on the same Wi‑Fi.</span>
+                  </p>
+                </div>
+              </li>
+
+              <li class="gallerySlide" style="--card: var(--paper-beige)">
+                <div class="galleryCard">
+                  <figure class="device phone">
+                    <span class="sideBtn power" aria-hidden="true"></span>
+                    <span class="sideBtn volUp" aria-hidden="true"></span>
+                    <span class="sideBtn volDown" aria-hidden="true"></span>
+                    <div class="bezel">
+                      <span class="island" aria-hidden="true"></span>
+                      <img
+                        class="screen"
+                        src="./assets/screenshots/02-lobby.png"
+                        width="396"
+                        height="860"
+                        alt="Lobby with players ready to start"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                  <p class="galleryCaption">
+                    <strong>Lobby</strong>
+                    <span>Avatars in, timers set, three or more seats.</span>
+                  </p>
+                </div>
+              </li>
+
+              <li class="gallerySlide" style="--card: var(--paper-canvas)">
+                <div class="galleryCard">
+                  <figure class="device phone">
+                    <span class="sideBtn power" aria-hidden="true"></span>
+                    <span class="sideBtn volUp" aria-hidden="true"></span>
+                    <span class="sideBtn volDown" aria-hidden="true"></span>
+                    <div class="bezel">
+                      <span class="island" aria-hidden="true"></span>
+                      <img
+                        class="screen"
+                        src="./assets/screenshots/03-drawing.png"
+                        width="396"
+                        height="860"
+                        alt="Drawing turn with tools and colour palette"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                  <p class="galleryCaption">
+                    <strong>Drawing</strong>
+                    <span>One category. Pens out. The clock is ticking.</span>
+                  </p>
+                </div>
+              </li>
+
+              <li class="gallerySlide" style="--card: var(--paper-white)">
+                <div class="galleryCard">
+                  <figure class="device phone">
+                    <span class="sideBtn power" aria-hidden="true"></span>
+                    <span class="sideBtn volUp" aria-hidden="true"></span>
+                    <span class="sideBtn volDown" aria-hidden="true"></span>
+                    <div class="bezel">
+                      <span class="island" aria-hidden="true"></span>
+                      <img
+                        class="screen"
+                        src="./assets/screenshots/04-guessing.png"
+                        width="396"
+                        height="860"
+                        alt="Guessing what the previous drawing shows"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                  <p class="galleryCaption">
+                    <strong>Guessing</strong>
+                    <span>What is that? Type a guess, someone will draw it next.</span>
+                  </p>
+                </div>
+              </li>
+
+              <li class="gallerySlide" style="--card: var(--paper-broadsheet)">
+                <div class="galleryCard">
+                  <figure class="device phone">
+                    <span class="sideBtn power" aria-hidden="true"></span>
+                    <span class="sideBtn volUp" aria-hidden="true"></span>
+                    <span class="sideBtn volDown" aria-hidden="true"></span>
+                    <div class="bezel">
+                      <span class="island" aria-hidden="true"></span>
+                      <img
+                        class="screen"
+                        src="./assets/screenshots/05-reveal.png"
+                        width="396"
+                        height="860"
+                        alt="Reveal walking through a pad’s journey"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                  <p class="galleryCaption">
+                    <strong>Reveal</strong>
+                    <span>Step through each pad’s journey on every phone.</span>
+                  </p>
+                </div>
+              </li>
+
+              <li class="gallerySlide" style="--card: var(--paper-beige)">
+                <div class="galleryCard">
+                  <figure class="device phone">
+                    <span class="sideBtn power" aria-hidden="true"></span>
+                    <span class="sideBtn volUp" aria-hidden="true"></span>
+                    <span class="sideBtn volDown" aria-hidden="true"></span>
+                    <div class="bezel">
+                      <span class="island" aria-hidden="true"></span>
+                      <img
+                        class="screen"
+                        src="./assets/screenshots/06-round-over.png"
+                        width="396"
+                        height="860"
+                        alt="Round complete with the full doodle chain"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                  <p class="galleryCaption">
+                    <strong>Round over</strong>
+                    <span>Save the laughs to History, or play again.</span>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block blockSplit" aria-labelledby="why-title">
+          <div class="blockHead">
+            <h2 id="why-title">
+              No accounts. No cloud lobby. Just phones on the same network.
+            </h2>
+          </div>
+          <ul class="cellRow cellRow3">
+            <li class="cell" data-reveal>
+              <h3>Nearby phones, same Wi‑Fi</h3>
+              <p>
+                Host a lobby over the local network, drawings sync to the table,
+                not to our servers.
+              </p>
+            </li>
+            <li class="cell" data-reveal data-reveal-delay="1">
+              <h3>Pass-and-play seats</h3>
+              <p>
+                Short a device? Add extra seats on one phone and keep the loop
+                moving.
+              </p>
+            </li>
+            <li class="cell" data-reveal data-reveal-delay="2">
+              <h3>Synced reveal + History</h3>
+              <p>
+                Everyone watches the same unravel, then keeps the round on their
+                phone.
+              </p>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block blockClose" aria-labelledby="close-title">
+          <div class="blockHead" data-reveal>
+            <h2 id="close-title">
+              Needs 3+ players. Same room, same Wi‑Fi or hotspot, then let the
+              doodles wander.
+            </h2>
+          </div>
+          <div class="ctaRow" data-reveal data-reveal-delay="1">
             <a
               class="button"
               href="#"
               aria-disabled="true"
               title="App Store link coming soon"
             >
-              App Store — soon
+              [ App Store, soon ]
             </a>
-            <a class="button secondary" href="./support/">Support</a>
+            <a class="button secondary" href="./support/">[ Support ]</a>
           </div>
+        </section>
 
-          <ul class="features">
-            <li>
-              <span class="tick" aria-hidden="true">→</span>
-              <div>
-                <strong>Nearby phones, same Wi‑Fi</strong>
-                <br />
-                <span
-                  >Host a lobby over the local network — no accounts, no cloud
-                  game server.</span
-                >
-              </div>
-            </li>
-            <li>
-              <span class="tick" aria-hidden="true">→</span>
-              <div>
-                <strong>Pass-and-play seats</strong>
-                <br />
-                <span
-                  >Add extra seats on one phone when you’re short a device.</span
-                >
-              </div>
-            </li>
-            <li>
-              <span class="tick" aria-hidden="true">→</span>
-              <div>
-                <strong>Synced reveal</strong>
-                <br />
-                <span
-                  >Walk each pad’s journey together, then save the round to
-                  History on every phone.</span
-                >
-              </div>
-            </li>
-          </ul>
-        </main>
-      </div>
-
-      <section class="gallery" aria-label="App screenshots">
-        <div class="galleryHeader">
-          <h2 class="galleryTitle">Around the table</h2>
-        </div>
-        <p class="galleryEmpty">
-          Screenshots coming soon — drop PNGs into
-          <code>assets/screenshots/</code> when you have App Store art ready.
-        </p>
-      </section>
-
-      <div class="shell">
-        <footer class="footer">
+        <footer class="block blockFooter">
           <span>© <span id="y"></span> Doodloop</span>
           <div class="footerLinks">
             <a href="./support/">Support</a>
@@ -115,8 +410,6 @@
         </footer>
       </div>
     </div>
-    <script>
-      document.getElementById('y').textContent = String(new Date().getFullYear());
-    </script>
+    <script src="./main.js" defer></script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy — Doodloop</title>
+    <title>Privacy Policy, Doodloop</title>
     <meta name="description" content="Privacy policy for Doodloop." />
     <link rel="icon" href="../assets/app-icon-64.png" type="image/png" />
     <link rel="apple-touch-icon" href="../assets/app-icon-256.png" />
@@ -11,31 +11,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Space+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Space+Mono:wght@400;700&display=swap"
     />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css?v=20" />
   </head>
   <body>
     <div class="page">
-      <div class="shell">
-        <nav class="nav" aria-label="Primary">
-          <a class="brand" href="../">
-            <img
-              class="brandIcon"
-              src="../assets/app-icon-256.png"
-              width="40"
-              height="40"
-              alt=""
-            />
-            <span class="brandName">Doodloop</span>
-          </a>
-          <div class="navLinks">
-            <a href="../support/">Support</a>
-            <a href="./">Privacy</a>
-          </div>
-        </nav>
+      <div class="stack">
+        <header class="block blockNav">
+          <nav class="nav" aria-label="Primary">
+            <a class="brand" href="../">
+              <img
+                class="brandIcon"
+                src="../assets/app-icon-256.png"
+                width="96"
+                height="96"
+                alt=""
+              />
+              <span class="brandName">Doodloop</span>
+            </a>
+            <div class="navLinks">
+              <a href="../support/">Support</a>
+              <a href="./">Privacy</a>
+            </div>
+          </nav>
+        </header>
 
-        <main class="panel prose">
+        <main class="block prose">
           <h1>Privacy Policy</h1>
           <p class="meta">Last updated: 9 October 2026</p>
 
@@ -57,16 +59,16 @@
           <h2>Information we process</h2>
           <ul>
             <li>
-              <strong>Profile on device</strong> — your display name and avatar
+              <strong>Profile on device</strong>, your display name and avatar
               drawing are stored locally (on-device preferences / app storage).
             </li>
             <li>
-              <strong>Game drawings and guesses</strong> — content you create
+              <strong>Game drawings and guesses</strong>, content you create
               during a round is kept on the participating phones for that
               session and may be saved into local History when a round ends.
             </li>
             <li>
-              <strong>Local network play</strong> — when you host or join a
+              <strong>Local network play</strong>, when you host or join a
               lobby, nearby devices exchange game state over your local network
               (Wi‑Fi / Personal Hotspot) using Bonjour discovery. Hosts share a
               short join code verbally so only invited nearby phones can enter.
@@ -74,7 +76,7 @@
               game server that stores your rounds.
             </li>
             <li>
-              <strong>Exports</strong> — if you save or share a drawing (for
+              <strong>Exports</strong>, if you save or share a drawing (for
               example to Photos), it leaves the app only when you use the system
               share / save flows.
             </li>
@@ -92,11 +94,11 @@
           <h2>Permissions</h2>
           <ul>
             <li>
-              <strong>Local Network</strong> — so phones in the same room can
+              <strong>Local Network</strong>, so phones in the same room can
               find each other and sync the game.
             </li>
             <li>
-              <strong>Photo Library (add only)</strong> — only if you choose to
+              <strong>Photo Library (add only)</strong>, only if you choose to
               save an exported drawing to Photos.
             </li>
           </ul>
@@ -135,7 +137,7 @@
           </p>
         </main>
 
-        <footer class="footer">
+        <footer class="block blockFooter">
           <span>© <span id="y"></span> Doodloop</span>
           <div class="footerLinks">
             <a href="../">Home</a>
@@ -144,8 +146,6 @@
         </footer>
       </div>
     </div>
-    <script>
-      document.getElementById('y').textContent = String(new Date().getFullYear());
-    </script>
+    <script src="../main.js" defer></script>
   </body>
 </html>

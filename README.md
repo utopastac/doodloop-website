@@ -35,5 +35,5 @@ App Store listing URLs:
 
 ## Assets
 
-- `assets/app-icon*.png` — from the iOS `AppIcon`.
+- `assets/app-icon*.png`, from the iOS `AppIcon`.
 - Drop App Store screenshots into `assets/screenshots/` and wire them in `index.html` when ready.
