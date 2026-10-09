@@ -16,7 +16,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Space+Mono:wght@400;700&display=swap"
     />
-    <link rel="stylesheet" href="./styles.css?v=28" />
+    <link rel="stylesheet" href="./styles.css?v=43" />
   </head>
   <body>
     <div class="page">
@@ -33,10 +33,14 @@
               />
               <span class="brandName">Doodloop</span>
             </a>
-            <div class="navLinks">
-              <a href="./support/">Support</a>
-              <a href="./privacy/">Privacy</a>
-            </div>
+            <a
+              class="button navCta"
+              href="#"
+              aria-disabled="true"
+              title="App Store link coming soon"
+            >
+              [ iOS app ]
+            </a>
           </nav>
         </header>
 
@@ -47,8 +51,8 @@
                 See how far the doodle wandered
               </h1>
               <p class="heroLede">
-                Local multiplayer on nearby iPhones. Draw, pass left, guess,
-                repeat, then reveal the loop together.
+                Local multiplayer on nearby iPhones. Select a category, draw,
+                guess, then reveal the loop together.
               </p>
               <div class="ctaRow">
                 <a
@@ -59,7 +63,6 @@
                 >
                   [ App Store, soon ]
                 </a>
-                <a class="button secondary" href="#how">[ How it works ]</a>
               </div>
             </div>
 
@@ -88,11 +91,31 @@
         <section class="block blockSplit" id="how" aria-labelledby="how-title">
           <div class="blockHead">
             <h2 id="how-title">
-              One shared category. Pads travel left. The joke lands at the end.
+              One shared category. Draw, guess, then reveal how far it wandered.
             </h2>
           </div>
           <ol class="cellRow cellRow4">
             <li class="cell" data-reveal>
+              <figure class="device phone loopPhone">
+                <div class="bezel">
+                  <img
+                    class="screen"
+                    src="./assets/screenshots/02-lobby.png"
+                    width="396"
+                    height="860"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <span class="loopIndex">01</span>
+              <h3>Select</h3>
+              <p>
+                The host picks a category, everyone draws from the same prompt
+                pool.
+              </p>
+            </li>
+            <li class="cell" data-reveal data-reveal-delay="1">
               <figure class="device phone loopPhone">
                 <div class="bezel">
                   <img
@@ -105,25 +128,9 @@
                   />
                 </div>
               </figure>
-              <div class="cellCopy">
-                <span class="loopIndex">01</span>
-                <h3>Draw</h3>
-                <p>Sketch the prompt on your pad before the timer runs out.</p>
-              </div>
-            </li>
-            <li class="cell" data-reveal data-reveal-delay="1">
-              <div class="loopPass" aria-hidden="true">
-                <span class="loopPassArrow">→</span>
-                <span>Pass left</span>
-              </div>
-              <div class="cellCopy">
-                <span class="loopIndex">02</span>
-                <h3>Pass</h3>
-                <p>
-                  Every pad moves one seat left, you never keep drawing on your
-                  own.
-                </p>
-              </div>
+              <span class="loopIndex">02</span>
+              <h3>Draw</h3>
+              <p>Sketch the prompt on your pad before the timer runs out.</p>
             </li>
             <li class="cell" data-reveal data-reveal-delay="2">
               <figure class="device phone loopPhone">
@@ -138,14 +145,12 @@
                   />
                 </div>
               </figure>
-              <div class="cellCopy">
-                <span class="loopIndex">03</span>
-                <h3>Guess</h3>
-                <p>
-                  Write what you think the doodle shows. Someone else will draw
-                  that.
-                </p>
-              </div>
+              <span class="loopIndex">03</span>
+              <h3>Guess</h3>
+              <p>
+                Write what you think the doodle shows. Someone else will draw
+                that.
+              </p>
             </li>
             <li class="cell" data-reveal data-reveal-delay="3">
               <figure class="device phone loopPhone">
@@ -160,13 +165,11 @@
                   />
                 </div>
               </figure>
-              <div class="cellCopy">
-                <span class="loopIndex">04</span>
-                <h3>Reveal</h3>
-                <p>
-                  Walk each pad’s journey together and watch the chain unravel.
-                </p>
-              </div>
+              <span class="loopIndex">04</span>
+              <h3>Reveal</h3>
+              <p>
+                Walk each pad’s journey together and watch the chain unravel.
+              </p>
             </li>
           </ol>
         </section>
@@ -350,7 +353,7 @@
           </div>
         </section>
 
-        <section class="block blockSplit" aria-labelledby="why-title">
+        <section class="block blockSplit" id="why" aria-labelledby="why-title">
           <div class="blockHead">
             <h2 id="why-title">
               No accounts. No cloud lobby. Just phones on the same network.
@@ -402,7 +405,13 @@
         </section>
 
         <footer class="block blockFooter">
-          <span>© <span id="y"></span> Doodloop</span>
+          <div class="footerBrand">
+            <p class="footerCredit">
+              A product from
+              <a href="https://f-90.co.uk">f-90</a>
+            </p>
+            <p class="footerCopy">© <span id="y"></span> Doodloop</p>
+          </div>
           <div class="footerLinks">
             <a href="./support/">Support</a>
             <a href="./privacy/">Privacy Policy</a>

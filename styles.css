@@ -53,8 +53,17 @@
   --max-width: 40rem;
   --page-margin: 40px;
   --cell-pad: var(--space-l);
+  /* Keep text clear of vertical keylines; borders still span full width */
+  --cell-pad-end: 16px;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  @media (max-width: 719px) {
+    --page-margin: 16px;
+    --nav-height: 3.25rem;
+    --font-size-brand: 1.5rem;
+    --section-gap: 120px;
+  }
 }
 
 *,
@@ -107,9 +116,29 @@ a {
   min-height: 100vh;
   overflow-x: clip;
   padding: var(--page-margin);
+  /* Rays from each frame corner out to the viewport edges */
+  background-color: var(--surface-primary);
+  background-image:
+    linear-gradient(var(--grid-line), var(--grid-line)),
+    linear-gradient(var(--grid-line), var(--grid-line)),
+    linear-gradient(var(--grid-line), var(--grid-line)),
+    linear-gradient(var(--grid-line), var(--grid-line));
+  background-size:
+    1px 100%,
+    1px 100%,
+    100% 1px,
+    100% 1px;
+  background-position:
+    var(--page-margin) 0,
+    calc(100% - var(--page-margin) - 1px) 0,
+    0 var(--page-margin),
+    0 calc(100% - var(--page-margin) - 1px);
+  background-repeat: no-repeat;
 }
 
 .stack {
+  position: relative;
+  z-index: 0;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -133,11 +162,11 @@ a {
   border-top: 1px solid var(--grid-line);
 }
 
-/* 180px breathing room inside the frame, between main bands */
-.stack > .hero + .block,
-.stack > .blockSplit + .block,
-.stack > .blockClose + .block {
-  padding-top: var(--section-gap);
+/* Breathing room inside the frame, between main bands (above the next band's keyline) */
+.stack > .hero,
+.stack > .blockSplit,
+.stack > .blockClose {
+  padding-bottom: var(--section-gap);
 }
 
 .blockNav {
@@ -163,16 +192,38 @@ a {
   color: var(--text-subtle);
   font-size: var(--font-size-s);
 
-  & > * {
-    padding: var(--cell-pad) 0;
-  }
-
-  & > * + * {
+  & > .footerLinks {
+    padding: var(--cell-pad) var(--cell-pad-end) var(--cell-pad) 0;
     border-left: 1px solid var(--grid-line);
   }
 
   & a {
     color: var(--text-secondary);
+  }
+}
+
+.footerBrand {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+
+  & > * {
+    margin: 0;
+    padding: var(--cell-pad) var(--cell-pad-end) var(--cell-pad) 0;
+  }
+
+  & > * + * {
+    border-top: 1px solid var(--grid-line);
+  }
+}
+
+.footerCredit a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+
+  &:hover {
+    color: var(--accent);
   }
 }
 
@@ -185,7 +236,7 @@ a {
 }
 
 .blockHead {
-  padding: var(--cell-pad) 0;
+  padding: var(--cell-pad) var(--cell-pad-end) var(--cell-pad) 0;
   border-top: 1px solid var(--grid-line);
 
   & h2 {
@@ -223,25 +274,32 @@ a {
   border-top: 1px solid var(--grid-line);
 }
 
-.cellRow4 {
-  @media (min-width: 900px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: auto auto;
-  }
+#how .blockHead,
+#how .cell,
+#why .blockHead,
+#why .cell {
+  background: var(--paper-white);
 }
 
-/* Shared media size for phone frames + pass graphic */
 .cellRow4 {
   --loop-media-width: min(100%, 11.5rem);
+
+  @media (min-width: 900px) {
+    /* media | index | title | body — shared across columns */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto auto auto auto;
+  }
 }
 
 .cellRow3 {
   @media (min-width: 720px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto;
   }
 }
 
 .cell {
+  position: relative;
   display: grid;
   gap: 0;
   align-content: start;
@@ -250,26 +308,21 @@ a {
   border-top: 1px solid var(--grid-line);
 
   & > * {
-    padding: var(--cell-pad) 0;
+    margin: 0;
+    padding: var(--cell-pad) var(--cell-pad-end) var(--cell-pad) 0;
   }
 
   & > * + * {
     border-top: 1px solid var(--grid-line);
   }
 
-  /* Inner stacks own their padding so dividers span the cell */
-  & > .cellCopy {
-    padding: 0;
-  }
-
-  & h3,
-  & .cellCopy > h3 {
+  & h3 {
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    margin: 0;
     height: var(--h3-row-height);
     padding-block: 0;
+    padding-inline-end: var(--cell-pad-end);
     font-family: var(--font-display);
     font-size: var(--font-size-h3);
     font-weight: 400;
@@ -278,9 +331,22 @@ a {
   }
 
   & p {
-    margin: 0;
     color: var(--text-secondary);
     font-size: var(--font-size-s);
+  }
+
+  & > .loopIndex {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: calc(var(--cell-pad) * 2 + 0.75rem);
+    padding-block: 0;
+    padding-inline-end: var(--cell-pad-end);
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 }
 
@@ -290,12 +356,23 @@ a {
 
 @media (min-width: 720px) {
   .cellRow3 .cell {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
     border-top: none;
-    border-left: 1px solid var(--grid-line);
+    border-left: none;
   }
 
-  .cellRow3 .cell:first-child {
-    border-left: none;
+  .cellRow3 .cell:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--grid-line);
+    z-index: 2;
+    pointer-events: none;
   }
 }
 
@@ -303,49 +380,22 @@ a {
   .cellRow4 .cell {
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 2;
+    grid-row: span 4;
     border-top: none;
-    border-left: 1px solid var(--grid-line);
-  }
-
-  .cellRow4 .cell:first-child {
     border-left: none;
   }
 
-  .cellRow4 .loopPass {
-    height: 100%;
-    aspect-ratio: auto;
+  .cellRow4 .cell:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--grid-line);
+    z-index: 2;
+    pointer-events: none;
   }
-}
-
-.cellCopy {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-
-  & > * {
-    margin: 0;
-    padding: var(--cell-pad) 0;
-    border-top: 1px solid var(--grid-line);
-  }
-
-  & > *:first-child {
-    border-top: none;
-  }
-}
-
-.cellCopy > .loopIndex {
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-  /* Keep prior row height (pad + 0.75rem type); type is now 2× */
-  height: calc(var(--cell-pad) * 2 + 0.75rem);
-  padding-block: 0;
-  font-size: 1.5rem;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
 }
 
 .loopPhone {
@@ -376,31 +426,27 @@ a {
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  gap: var(--space-m);
+  gap: 0;
   min-height: var(--nav-height);
   flex-wrap: wrap;
 
-  & a {
+  & a:not(.button) {
     text-decoration: none;
     color: var(--text-primary);
   }
+}
 
-  & .navLinks {
-    display: flex;
-    align-items: center;
-    gap: var(--space-m);
-    flex-wrap: wrap;
-  }
+.navCta {
+  align-self: stretch;
+  min-height: var(--nav-height);
+  padding-inline: var(--space-l);
+  border: none;
+  border-left: 1px solid var(--grid-line);
+  border-radius: 0;
+  color: var(--text-on-accent);
 
-  & .navLinks a {
-    text-decoration: underline;
-    text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
-    color: var(--text-secondary);
-
-    &:hover {
-      color: var(--accent);
-      text-decoration-color: var(--accent);
-    }
+  &:hover {
+    color: var(--text-on-accent);
   }
 }
 
@@ -540,7 +586,7 @@ a {
     width: 100%;
     min-width: 0;
     margin: 0;
-    padding: var(--cell-pad) 0;
+    padding: var(--cell-pad) var(--cell-pad-end) var(--cell-pad) 0;
     border: none;
     border-top: 1px solid var(--grid-line);
   }
@@ -566,21 +612,38 @@ a {
 }
 
 .heroPhone {
-  display: grid;
-  place-items: center;
-  justify-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  max-width: none;
   padding: var(--cell-pad) 0;
   border-top: 1px solid var(--grid-line);
   overflow: clip;
+  margin-inline: 0;
 
   @media (min-width: 860px) {
     border-top: none;
-    border-left: 1px solid var(--grid-line);
+    border-left: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--grid-line);
+      z-index: 2;
+      pointer-events: none;
+    }
   }
 
   &.device.phone {
     width: 100%;
+    max-width: none;
   }
 
   /* Side buttons were painting over the column keyline */
@@ -589,12 +652,21 @@ a {
   }
 
   & .bezel {
-    width: min(100%, 16.5rem);
+    width: min(70%, 16.5rem);
     margin-inline: auto;
+    flex-shrink: 0;
 
     @media (min-width: 860px) {
       width: min(72%, 20rem);
     }
+  }
+}
+
+/* Keep how-section phones centered in their cell on small screens */
+@media (max-width: 899px) {
+  .cell > .loopPhone,
+  .cell > .loopPass {
+    margin-inline: auto;
   }
 }
 
@@ -661,13 +733,22 @@ a {
 }
 
 .gallerySlide {
+  position: relative;
   flex: 0 0 min(78vw, 20rem);
   scroll-snap-align: start;
   min-width: 0;
-  border-left: 1px solid var(--grid-line);
+  border-left: none;
 
-  &:first-child {
-    border-left: none;
+  &:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--grid-line);
+    z-index: 2;
+    pointer-events: none;
   }
 }
 
@@ -707,8 +788,7 @@ a {
 
   & > * {
     margin: 0;
-    /* Vertical pad only on the box, right pad was stopping keylines short of the column rule */
-    padding: var(--cell-pad) 0;
+    padding: var(--cell-pad) var(--cell-pad-end) var(--cell-pad) 0;
     border-top: 1px solid var(--grid-line);
   }
 
@@ -722,6 +802,7 @@ a {
     box-sizing: border-box;
     height: var(--h3-row-height);
     padding-block: 0;
+    padding-inline-end: var(--cell-pad-end);
     font-family: var(--font-display);
     font-size: var(--font-size-h3);
     font-weight: 400;
@@ -734,7 +815,7 @@ a {
 
 .prose {
   max-width: var(--max-width);
-  padding: var(--cell-pad) 0;
+  padding: var(--cell-pad) var(--cell-pad-end) var(--cell-pad) 0;
 
   & h1 {
     margin: 0 0 var(--space-m);
