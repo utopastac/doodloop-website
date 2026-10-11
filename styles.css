@@ -173,8 +173,7 @@ a {
   padding: 0;
 }
 
-.blockSplit,
-.blockClose {
+.blockSplit {
   display: flex;
   flex-direction: column;
 }
@@ -670,8 +669,56 @@ a {
   }
 }
 
-/* Close CTA band shares the same divider model */
+/* Close CTA band — icon column + copy/CTA */
+.blockClose {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: stretch;
+  padding: 0;
+
+  @media (max-width: 719px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.closeIcon {
+  margin: 0;
+  align-self: stretch;
+  min-width: 0;
+  border-right: 1px solid var(--grid-line);
+  background: var(--paper-white);
+  line-height: 0;
+  overflow: hidden;
+
+  & img {
+    display: block;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  @media (max-width: 719px) {
+    align-self: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--grid-line);
+
+    & img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+  }
+}
+
+.closeBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .blockClose .blockHead {
+  border-top: none;
   border-bottom: none;
 }
 
